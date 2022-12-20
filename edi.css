@@ -1,0 +1,26 @@
+body{
+    background-color:#333333;
+    color:white;
+    font-family:'Lato',sans-serif;
+    text-align: center;
+}
+#head{
+    font-size: 70px;
+    text-align: center;
+    background-size: cover;
+    margin-bottom: 20px;
+}
+#content{
+    background-color: #555555;
+    width: 800px;
+    padding: 20px;
+    text-align: center;
+}
+#table{
+    text-align: center;
+    background-color: #333333;
+    padding-left: 430px;
+    padding-top: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
