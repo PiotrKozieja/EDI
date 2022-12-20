@@ -25,3 +25,23 @@ body{
     display: grid;
     justify-content: center;
 }
+table{
+    padding-left: 25px;
+
+}
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+th{
+  background-color: #303030;
+
+  border: 1px solid #ddd;
+  text-align: center;
+}
+td{
+  background-color: #303030;
+}
+tr:hover td {
+  background-color: #474747;
+  }
