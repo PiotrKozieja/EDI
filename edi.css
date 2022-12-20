@@ -19,8 +19,9 @@ body{
 #table{
     text-align: center;
     background-color: #333333;
-    padding-left: 430px;
     padding-top: 20px;
     margin-left: 100px;
     margin-right: 100px;
+    display: grid;
+    justify-content: center;
 }
