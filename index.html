@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="edi.css">
+<title>Edi</title>
+</head>
+<body>
+<h1>Projekt EDI wykonany przez: Piotr Kozieja, Łukasz Maguda, Wojciech Guja </h1> 
+<script>table();</script>
+<div id = "table">
+<div id ="content">
+<table>
+    <thead>
+      <tr>
+        <th>grocery</th>
+        <th>country_name</th>
+        <th>company_name</th>
+        <th>amount</th>
+        <th>boolean</th>
+      </tr>
+    </thead>
+    <tbody id="myTable">
+      <!-- This is where the JSON data will be added -->
+    </tbody>
+  </table>
+</div>
+</div>
+
+<script>
+
+
+fetch("https://my.api.mockaroo.com/data.json?key=7c430aa0")
+.then(response => response.json())
+
+.then(data => {
+  const tbody = document.getElementById('myTable');
+  data.forEach(item => {
+    const tr = document.createElement('tr');
+    const td1 = document.createElement('td');
+    td1.innerHTML = item.grocery;
+    const td2 = document.createElement('td');
+    td2.innerHTML = item.country_name;
+    const td3 = document.createElement('td');
+    td3.innerHTML = item.company_name;
+    const td4 = document.createElement('td');
+    td4.innerHTML = item.amount;
+    const td5 = document.createElement('td');
+    td5.innerHTML = item.bool;
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    tr.appendChild(td3);
+    tr.appendChild(td4);
+    tr.appendChild(td5);
+    tbody.appendChild(tr);
+  })
+  CreateChart2(data)
+})
+
+function CreateChart2(data) {
+
+  const labels = data.map(product => product.grocery); 
+  const quantities = data.map(product => product.amount);
+
+
+  const ctx = document.getElementById('myChart2');
+  const chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: labels,
+          datasets: [{
+              label: 'Amount',
+              data: quantities,
+              borderWidth: 1,
+              BarThickness: 10
+          }]
+      },
+      options: {
+          indexAxis: 'y',
+          elements: {
+              bar: {
+                  borderWidth: 1,
+              }
+          },
+          responsive: true,
+          plugins: {
+              legend: {
+                  position: 'bottom',
+              },
+              title: {
+                  display: true,
+                  text: 'Amount of groceries sold'
+              }
+          }
+      },
+  });
+};
+
+</script>
+<div>
+  <canvas id="myChart2"></canvas>
+</div>
+
+</body>
+</html>
