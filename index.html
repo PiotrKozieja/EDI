@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -7,10 +6,14 @@
 </head>
 <body>
 <h1>Projekt EDI wykonany przez: Piotr Kozieja, Łukasz Maguda, Wojciech Guja </h1> 
-<script>table();</script>
 <div id = "table">
 <div id ="content">
 <table>
+  <div id="buttonsDiv">
+  <button id="button1" class = "btn">JSON File 1</button>
+  <button id="button2" class = "btn">JSON File 2</button>
+  <button id="button3" class = "btn">JSON File 3</button>
+</div>
     <thead>
       <tr>
         <th>grocery</th>
@@ -25,15 +28,40 @@
     </tbody>
   </table>
 </div>
-</div>
+
 
 <script>
 
+document.getElementById("button1").addEventListener("click", function(){
+    fetch("data1.json")
+      .then(res => res.json())
+      .then(data => {
+        CreateChart2(data)
+        table(data)
+        
+      });
+});
 
-fetch("https://my.api.mockaroo.com/data.json?key=7c430aa0")
-.then(response => response.json())
+document.getElementById("button2").addEventListener("click", function(){
+    fetch("data2.json")
+      .then(res => res.json())
+      .then(data => {
+        CreateChart2(data)
+        table(data)
+      });
+});
 
-.then(data => {
+document.getElementById("button3").addEventListener("click", function(){
+    fetch("data3.json")
+      .then(res => res.json())
+      .then(data => {
+        CreateChart2(data)
+        table(data)
+      });
+})
+
+
+function table(data){
   const tbody = document.getElementById('myTable');
   data.forEach(item => {
     const tr = document.createElement('tr');
@@ -54,8 +82,12 @@ fetch("https://my.api.mockaroo.com/data.json?key=7c430aa0")
     tr.appendChild(td5);
     tbody.appendChild(tr);
   })
-  CreateChart2(data)
-})
+
+}
+
+
+
+
 
 function CreateChart2(data) {
 
