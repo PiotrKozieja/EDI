@@ -25,6 +25,15 @@ body{
   display: grid;
   justify-content: center;
 }
+.btn{
+  background-color: #333333;
+  color: white;
+  font-size: 20px;
+  border-color: white;
+}
+#buttonsDiv{
+  margin-bottom: 15px;
+}
 table{
 overflow-y:scroll;
 height:500px;
